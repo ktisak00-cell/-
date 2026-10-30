@@ -1,4 +1,3 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>บัญชีรับ-จ่าย</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,75 +36,6 @@ body{
 button,input,select{font:inherit;color:inherit}
 button{cursor:pointer}
 :focus-visible{outline:2px solid var(--ink);outline-offset:2px}
-.app{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
-.muted{color:var(--ink-2)}
-
-.top{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.top h1{margin:0;font:700 24px/1.2 var(--f-display);letter-spacing:.01em}
-.sync{display:block;font-size:12px;color:var(--ink-2);margin-top:2px}
-.curwrap{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-2)}
-.curwrap select{height:34px;padding:0 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
-
-.tabbar{
-  position:fixed;left:0;right:0;bottom:0;z-index:15;background:var(--surface);border-top:1px solid var(--line);
-  padding-left:max(8px,env(safe-area-inset-left,0px));padding-right:max(8px,env(safe-area-inset-right,0px));
-  padding-bottom:env(safe-area-inset-bottom,0px);
-}
-.tabbar .tin{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr)}
-.tabbar button{position:relative;height:58px;padding:0 1px;border:0;border-top:3px solid transparent;background:none;color:var(--ink-2);font-weight:500;font-size:12px}
-.tabbar button[aria-current="page"]{color:var(--ink);border-top-color:var(--ink);font-weight:600}
-
-.nav{display:flex;align-items:center;gap:8px}
-.nav .step{width:42px;height:42px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-size:20px;line-height:1}
-.nav .plabel{flex:1;min-width:0;text-align:center;font:600 19px/1.3 var(--f-display)}
-.nav .now{height:42px;padding:0 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-size:14px}
-
-.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;min-width:0}
-.card h2{margin:0 0 12px;font:600 16px/1.3 var(--f-display);letter-spacing:.02em}
-.hrow{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-bottom:12px}
-.hrow h2{margin:0}
-.unit{font-size:12px;color:var(--ink-2);white-space:nowrap}
-.hint{margin:0 0 10px;font-size:13px;color:var(--ink-2)}
-
-/* home tables */
-.hgrid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(min(100%,430px),1fr));align-items:start}
-.tw{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:14px}
-th,td{padding:9px 8px;text-align:right;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums;vertical-align:top}
-th:first-child,td:first-child{text-align:left}
-th{font-size:12px;font-weight:500;color:var(--ink-2);white-space:nowrap}
-td small{display:block;color:var(--ink-2);font-size:12px}
-td.in{color:var(--in)} td.out{color:var(--out)}
-td.l{text-align:left}
-tr.cur td{background:var(--surface-2);font-weight:600}
-tfoot td{font-weight:600;border-bottom:1px solid var(--line)}
-tfoot tr:last-child td{border-bottom:0}
-tfoot tr.big td{font-size:15px}
-td.empty{text-align:center;color:var(--ink-2);padding:16px 8px}
-.linkbtn2{padding:0;border:0;background:none;color:var(--ink);text-decoration:underline;text-underline-offset:3px;font-size:13px}
-.tlinks{margin:10px 0 0}
-
-.hint b{color:var(--ink)} .hint b.in{color:var(--in)} .hint b.out{color:var(--out)}
-.tall{max-height:420px;overflow:auto}
-.tall thead th{position:sticky;top:0;z-index:1;background:var(--surface)}
-
-/* home cards */
-.hc{border-radius:16px;overflow:hidden;background:var(--surface);border:1px solid var(--line);min-width:0}
-.hc-head{display:flex;align-items:baseline;justify-content:space-between;gap:4px 12px;flex-wrap:wrap;padding:14px 16px;color:#fff;background:linear-gradient(135deg,var(--a1),var(--a2))}
-.hc-head h2{margin:0;font:600 16px/1.35 var(--f-display);color:#fff}
-.hc-head .unit{color:#fff;opacity:.9}
-.hc-body{padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0}
-.hc .hint{margin:0}
-.hc .tlinks{margin:0}
-.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:8px}
-.tile{padding:10px 12px;border-radius:12px;background:color-mix(in srgb,var(--a2) 14%,var(--surface));min-width:0}
-.tl{display:block;font-size:12px;color:var(--ink-2)}
-.tv{display:block;font:700 20px/1.25 var(--f-display);font-variant-numeric:tabular-nums;word-break:break-word}
-.tv.in{color:var(--in)} .tv.out,.tv.neg{color:var(--out)}
-.hc tr.cur td{background:color-mix(in srgb,var(--a2) 18%,var(--surface))}
-.hc .tall thead th{background:var(--surface)}
-.hgrid > .full{grid-column:1/-1}
-.sumseg{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;padding:3px;background:var(--surface-2);border-radius:10px}
 .sumseg button{height:38px;border:1px solid transparent;border-radius:8px;background:none;font-weight:500;color:var(--ink-2)}
 .sumseg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);border-color:var(--line);font-weight:600}
 .c-all{--a1:#312E81;--a2:#4F46E5}
