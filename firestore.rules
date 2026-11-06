@@ -1,0 +1,25 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+    function isAdmin() { return signedIn() && request.auth.token.email == 'admin@lkmoney.app'; }
+    function isMember() { return signedIn() && exists(/databases/$(database)/documents/users/$(request.auth.uid)); }
+
+    // รายชื่อสมาชิก: แอดมินเท่านั้นที่เพิ่ม/ลบสิทธิ์ได้
+    match /users/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
+      allow write: if isAdmin();
+    }
+
+    // ข้อมูลรายรับ-จ่ายของแต่ละคน: เจ้าของเท่านั้น (และแอดมิน)
+    match /users/{uid}/docs/{docId} {
+      allow read, write: if isAdmin() || (isMember() && request.auth.uid == uid);
+    }
+
+    // รายชื่อบัญชีที่แสดงในแอปและแชท: สมาชิกเท่านั้น
+    match /shared/{docId} {
+      allow read, write: if isAdmin() || isMember();
+    }
+  }
+}
