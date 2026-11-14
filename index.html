@@ -2095,6 +2095,21 @@ function openAdj(cur){
   });
   setTimeout(function(){try{inp.focus()}catch(e){}},50);
 }
+
+/* thousands separators while typing in every money box */
+function fmtAmtBox(el){
+  var v=el.value,ss=el.selectionStart,fromEnd=(ss==null?0:v.length-ss);
+  var raw=v.replace(/[^0-9.]/g,''),i=raw.indexOf('.'),ip=i<0?raw:raw.slice(0,i),dp=i<0?null:raw.slice(i+1).replace(/\./g,'').slice(0,2);
+  ip=ip.replace(/^0+(?=\d)/,'').replace(/\B(?=(\d{3})+(?!\d))/g,',');
+  var nv=ip+(dp===null?'':'.'+dp);
+  if(nv===v)return;
+  el.value=nv;
+  try{var p=Math.max(0,nv.length-fromEnd);el.setSelectionRange(p,p)}catch(e){}
+}
+document.addEventListener('input',function(e){
+  var el=e.target;
+  if(el&&el.tagName==='INPUT'&&el.getAttribute('inputmode')==='decimal')fmtAmtBox(el);
+});
 document.addEventListener('click',function(e){
   var b=e.target.closest&&e.target.closest('[data-adj]');
   if(b)openAdj(b.dataset.adj);
