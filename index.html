@@ -2916,10 +2916,12 @@ function askLogout(){
 }
 window.addEventListener('popstate',function(){
   if(state.profile){
+    if(backArmed){backArmed=false;clearTimeout(backT);history.back();return}
     pushTrap();
     if(closeTopOverlay())return;
     if(state.page!=='home'){setPage('home');return}
-    askLogout();return;
+    backArmed=true;toast('กดอีกครั้งเพื่อออกจากแอป');
+    clearTimeout(backT);backT=setTimeout(function(){backArmed=false},2400);return;
   }
   if(backArmed){backArmed=false;clearTimeout(backT);history.back();return}
   pushTrap();backArmed=true;toast('กดอีกครั้งเพื่อออกจากแอป');
